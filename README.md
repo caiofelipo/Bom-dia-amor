@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Bom dia, meu amor ❤️</title>
+  <title>Lírio do Amor 🌸</title>
   <style>
     body {
       margin: 0;
@@ -10,23 +10,22 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to top, #fbc2eb, #a6c1ee);
+      background: linear-gradient(to top, #fff0f5, #ffe4e1);
       font-family: 'Arial', sans-serif;
-      overflow: hidden;
     }
 
     .flower {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 450px;
+      height: 450px;
     }
 
     .petal {
       position: absolute;
-      width: 120px;
-      height: 200px;
-      background: pink;
-      border-radius: 60% 60% 0 0;
+      width: 140px;
+      height: 220px;
+      background: #ffb6c1;
+      border-radius: 50% 50% 0 0;
       transform-origin: bottom center;
       display: flex;
       justify-content: center;
@@ -34,13 +33,18 @@
       cursor: pointer;
       text-align: center;
       font-weight: bold;
-      color: #fff;
-      padding: 10px;
-      transition: transform 0.5s, opacity 0.5s;
+      color: #5a2d2d;
+      transition: transform 0.5s, opacity 0.5s, background 0.3s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .petal:hover {
+      background: #ff8fa3;
     }
 
     .petal.clicked {
-      background: #ff8fab;
+      background: #d46a6a;
+      color: #fff;
       pointer-events: none;
     }
 
@@ -48,61 +52,43 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 80px;
-      height: 80px;
-      background: yellow;
+      width: 100px;
+      height: 100px;
+      background: #ffd700;
       border-radius: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
-    }
-
-    .heart {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      font-size: 5em;
-      color: red;
-      font-weight: bold;
-      transition: transform 1s ease-in-out;
-      text-align: center;
-    }
-
-    .heart.show {
-      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
   </style>
 </head>
 <body>
   <div class="flower">
     <div class="center"></div>
-    <!-- 6 pétalas -->
-    <div class="petal" data-message="Você é a luz que ilumina meu dia" style="top:0; left:50%; transform:translateX(-50%) rotate(0deg);">Clique aqui</div>
-    <div class="petal" data-message="Seu sorriso é meu maior presente" style="top:20%; left:90%; transform:translate(-50%) rotate(60deg);">Clique aqui</div>
-    <div class="petal" data-message="Com você, tudo é mais bonito" style="top:60%; left:90%; transform:translate(-50%) rotate(120deg);">Clique aqui</div>
-    <div class="petal" data-message="Você é meu melhor pensamento" style="bottom:0; left:50%; transform:translateX(-50%) rotate(180deg);">Clique aqui</div>
-    <div class="petal" data-message="Amar você é fácil demais" style="top:60%; left:10%; transform:translate(-50%) rotate(240deg);">Clique aqui</div>
-    <div class="petal" data-message="Obrigado por existir na minha vida" style="top:20%; left:10%; transform:translate(-50%) rotate(300deg);">Clique aqui</div>
+    <!-- pétalas -->
+    <div class="petal" data-message="Você é minha alegria" style="top:0; left:50%; transform:translateX(-50%) rotate(0deg);">Clique aqui</div>
+    <div class="petal" data-message="Meu coração é seu" style="top:15%; left:90%; transform:translate(-50%) rotate(60deg);">Clique aqui</div>
+    <div class="petal" data-message="Ao seu lado tudo é paz" style="top:55%; left:90%; transform:translate(-50%) rotate(120deg);">Clique aqui</div>
+    <div class="petal" data-message="Você é meu sonho bom" style="bottom:0; left:50%; transform:translateX(-50%) rotate(180deg);">Clique aqui</div>
+    <div class="petal" data-message="Te amar é viver" style="top:55%; left:10%; transform:translate(-50%) rotate(240deg);">Clique aqui</div>
+    <div class="petal" data-message="Você é meu sempre" style="top:15%; left:10%; transform:translate(-50%) rotate(300deg);">Clique aqui</div>
   </div>
-
-  <div class="heart" id="heart">❤️<br>Bom dia amor, eu te amo!</div>
 
   <script>
     const petals = document.querySelectorAll('.petal');
-    const heart = document.getElementById('heart');
     let clickedCount = 0;
 
     petals.forEach(petal => {
       petal.addEventListener('click', () => {
-        alert(petal.dataset.message); // mostra a frase da pétala
+        alert(petal.dataset.message); // mostra a frase
         petal.classList.add('clicked');
         clickedCount++;
 
-        // quando todas forem clicadas
+        // quando todas forem clicadas, vai para outra página
         if (clickedCount === petals.length) {
           setTimeout(() => {
-            heart.classList.add('show');
-          }, 500);
+            window.location.href = "bomdia.html";
+          }, 800);
         }
       });
     });
