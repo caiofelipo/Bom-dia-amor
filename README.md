@@ -1,4 +1,3 @@
-
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -12,12 +11,14 @@
       align-items: center;
       background: linear-gradient(to top, #fff0f5, #ffe4e1);
       font-family: 'Arial', sans-serif;
+      overflow: hidden;
     }
 
     .flower {
       position: relative;
       width: 450px;
       height: 450px;
+      transition: opacity 1s ease-in-out;
     }
 
     .petal {
@@ -60,10 +61,28 @@
       z-index: 10;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 3em;
+      text-align: center;
+      color: #d6336c;
+      font-weight: bold;
+      opacity: 0;
+      transition: all 1s ease-in-out;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
   </style>
 </head>
 <body>
-  <div class="flower">
+  <div class="flower" id="flower">
     <div class="center"></div>
     <!-- pétalas -->
     <div class="petal" data-message="Você é minha alegria" style="top:0; left:50%; transform:translateX(-50%) rotate(0deg);">Clique aqui</div>
@@ -74,24 +93,9 @@
     <div class="petal" data-message="Você é meu sempre" style="top:15%; left:10%; transform:translate(-50%) rotate(300deg);">Clique aqui</div>
   </div>
 
+  <div class="message" id="message">❤️ Bom dia, amor! Eu te amo ❤️</div>
+
   <script>
     const petals = document.querySelectorAll('.petal');
-    let clickedCount = 0;
-
-    petals.forEach(petal => {
-      petal.addEventListener('click', () => {
-        alert(petal.dataset.message); // mostra a frase
-        petal.classList.add('clicked');
-        clickedCount++;
-
-        // quando todas forem clicadas, vai para outra página
-        if (clickedCount === petals.length) {
-          setTimeout(() => {
-            window.location.href = "bomdia.html";
-          }, 800);
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+    const flower = document.getElementById('flower');
+    const me
